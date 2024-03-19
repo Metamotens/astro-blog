@@ -1,0 +1,36 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image, Picture } from "astro:assets";
+import authorImg from "../assets/images/author.webp";
+import Button from "../components/Button.astro";
+---
+
+<Layout title="About">
+  <div class="flex gap-8">
+    <div>
+      <!-- <img src="/images/author.webp" alt="Author" class="rounded-lg" /> -->
+      <!-- <Picture
+        src={authorImg}
+        formats={["webp", "jpeg", "avig"]}
+        alt="Author"
+        class="rounded-lg"
+      /> -->
+      <Image src={authorImg} alt="Author" class="rounded-lg" />
+    </div>
+    <div class="prose">
+      <h1>Welcome to Astro</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio veniam
+        iusto commodi officia repudiandae maxime voluptatum laboriosam alias
+        molestias officiis aperiam sequi quos eos placeat enim adipisci,
+        explicabo nam quia.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis ut quas,
+        dignissimos sapiente cumque architecto ipsum ullam saepe, minima nulla
+        sunt aut illo maxime inventore eum distinctio aliquam. Sit, ea?
+      </p>
+      <Button type="primary" href="/contact" size="small">Contact us</Button>
+    </div>
+  </div>
+</Layout>

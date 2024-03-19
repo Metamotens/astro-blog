@@ -1,0 +1,53 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { getI18N } from "../i18n";
+
+const { currentLocale } = Astro;
+const currentPath = Astro.url.pathname;
+const isBlog = currentPath.includes("articles");
+const t = getI18N({ currentLocale });
+---
+
+<nav>
+  <ul class="flex items-center justify-center gap-6">
+    <li>
+      <a
+        class:list={[
+          "text-lg",
+          {
+            underline:
+              currentPath === getRelativeLocaleUrl(currentLocale, "/") ||
+              isBlog,
+          },
+        ]}
+        href={getRelativeLocaleUrl(currentLocale, "/")}>{t.navigation.HOME}</a
+      >
+    </li>
+    <li>
+      <a
+        class:list={[
+          "text-lg",
+          {
+            underline:
+              currentPath === getRelativeLocaleUrl(currentLocale, "/about"),
+          },
+        ]}
+        href={getRelativeLocaleUrl(currentLocale, "/about")}
+        >{t.navigation.ABOUT}</a
+      >
+    </li>
+    <li>
+      <a
+        class:list={[
+          "text-lg",
+          {
+            underline:
+              currentPath === getRelativeLocaleUrl(currentLocale, "/elements"),
+          },
+        ]}
+        href={getRelativeLocaleUrl(currentLocale, "/elements")}
+        >{t.navigation.ELEMENTS}</a
+      >
+    </li>
+  </ul>
+</nav>

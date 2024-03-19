@@ -1,0 +1,24 @@
+---
+interface Props {
+  href: string;
+  type: "primary" | "secondary";
+  size?: "small" | "large";
+}
+
+const { href, type, size } = Astro.props;
+---
+
+<a
+  href={href}
+  class:list={[
+    "inline-block no-underline px-6 py-3 text-white bg-teal-500 hover:bg-teal-600",
+    { "text-sm": size === "small" },
+    { "text-lg": size === "large" },
+    { "bg-teal-500 hover:bg-teal-60": type === "primary" },
+    { "bg-gray-500 hover:bg-gray-60": type === "secondary" },
+  ]}
+>
+  <slot name="icon-left" />
+  <slot />
+  <slot name="icon-right" />
+</a>

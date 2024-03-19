@@ -1,0 +1,43 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+const currentLocale = Astro.currentLocale;
+const currentPath = Astro.url.pathname;
+
+function getRouteFromPathname({ pathname }) {
+  const route = pathname
+    .split("/")
+    .filter((el) => el !== "" && el !== "en" && el !== "es")
+    .join("/");
+
+  return route;
+}
+
+const currentRoute = getRouteFromPathname({ pathname: currentPath });
+---
+
+<nav>
+  <ul class="flex gap-4">
+    <li>
+      <a
+        class:list={[
+          "text-lg",
+          {
+            underline: currentLocale === "en",
+          },
+        ]}
+        href={getRelativeLocaleUrl("en", currentRoute)}>English</a>
+    </li>
+    <li>
+      <a
+        class:list={[
+          "text-lg",
+          {
+            underline: currentLocale === "es",
+          },
+        ]}
+        href={getRelativeLocaleUrl("es", currentRoute)}>Español</a
+      >
+    </li>
+  </ul>
+</nav>
